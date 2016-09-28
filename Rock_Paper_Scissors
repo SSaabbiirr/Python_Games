@@ -1,0 +1,39 @@
+
+from random import randint
+from time import sleep
+
+options=['R', 'P', 'S']
+loss = "You lost dude!"
+won ="HEHEY!! YOU WON DUDE!! YOU DID IT!!! GRATZ!"
+
+def decide_winner(user_choice, computer_choice):
+  print "You selected: %s" % user_choice
+  print "Computer selecting..."
+  sleep(1)
+  print "Computer chose: %s" % computer_choice
+  user_choice_index = options.index(user_choice)
+  computer_choice_index = options.index(computer_choice)
+
+  if user_choice_index == computer_choice_index:
+    print "It is a tie"
+  elif user_choice_index == 0 and computer_choice_index == 2:
+    print won
+  elif user_choice_index == 2 and computer_choice_index == 1:
+    print won
+  elif user_choice_index == 1 and computer_choice_index == 0:
+    print won
+  elif user_choice_index > 2:
+    print "Invalid choice."
+  else:
+    print loss  
+  return
+  
+def play_RPS():
+  print "You are playing a Rock, Paper, Scissors simulation."
+  user_choice = raw_input("Select R for rock, P for Paper, or S for scissors\n> ")
+  sleep(1)
+  user_choice = user_choice.upper()
+  computer_choice = options[randint(0, len(options)-1)]
+  decide_winner(user_choice, computer_choice)
+
+play_RPS()
